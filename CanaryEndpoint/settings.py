@@ -13,8 +13,6 @@ SECRET_KEY = 'django-insecure-e+zm0ir$$40%$yo8wjllbo(omqz)29qk=dfta9e(7h8q1^f8fe
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'True') == 'True'
-print(f"DEBUG mode: {DEBUG}")  # ✅ Add this to see what's happening
-print(f"DEBUG env var: {os.getenv('DEBUG', 'NOT SET')}")  # ✅ Add this too
 
 ALLOWED_HOSTS = ['*']
 
