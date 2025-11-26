@@ -37,12 +37,15 @@ const checkAuth = async () => {
 
 router.beforeEach(async (to, from, next) => {
   if (to.meta.requiresAuth) {
-    const authenticated = await checkAuth()
-    
-    if (authenticated) {
-      next()
-    } else {
-      next({ name: 'login', query: { next: to.path } })
+    try {
+      await axios.get('/api/verify-session/')
+      next() // ✅ User is authenticated, proceed
+    } catch {
+      // ✅ Save the intended destination in query param
+      next({ 
+        name: 'login', 
+        query: { next: to.fullPath }  // This sets ?next=/users/create
+      })
     }
   } else {
     next()
