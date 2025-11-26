@@ -48,6 +48,7 @@ dist/
 *.swp
 *.swo
 *~
+.editorconfig
 
 # Environment variables
 .env
