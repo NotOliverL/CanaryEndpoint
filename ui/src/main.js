@@ -8,6 +8,8 @@ const app = createApp(App)
 
 // Configure axios to include credentials (cookies) with requests
 axios.defaults.withCredentials = true
+axios.defaults.xsrfCookieName = 'csrftoken'
+axios.defaults.xsrfHeaderName = 'X-CSRFToken'
 
 // Add error interceptor to handle 401 responses
 axios.interceptors.response.use(
