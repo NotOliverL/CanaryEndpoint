@@ -61,11 +61,11 @@ SESSION_COOKIE_SAMESITE = 'Lax'
 # Production-specific settings
 if not DEBUG:
     CSRF_TRUSTED_ORIGINS = [
-        'https://ohlarsen.pythonanywhere.com',  # ✅ Replace with your actual domain
+        'notoliverl.pythonanywhere.com', 
     ]
     CSRF_COOKIE_SECURE = True
     SESSION_COOKIE_SECURE = True
-    ALLOWED_HOSTS = ['ohlarsen.pythonanywhere.com']  # ✅ Replace with your actual domain
+    ALLOWED_HOSTS = ['notoliverl.pythonanywhere.com']  
 else:
     CSRF_COOKIE_SECURE = False
     SESSION_COOKIE_SECURE = False
@@ -75,11 +75,11 @@ ROOT_URLCONF = 'CanaryEndpoint.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'frontend' / 'static' / 'ui'],  # ✅ Fixed - removed duplicate
+        'DIRS': [BASE_DIR / 'frontend' / 'static' / 'ui'], 
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
-                'django.template.context_processors.debug',  # ✅ Added
+                'django.template.context_processors.debug', 
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
@@ -124,7 +124,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'  # Where collectstatic puts files
 STATICFILES_DIRS = [
-    BASE_DIR / 'frontend' / 'static',  # ✅ Changed from 'frontend/static/ui' to just 'frontend/static'
+    BASE_DIR / 'frontend' / 'static', 
 ]
 
 # Media files
