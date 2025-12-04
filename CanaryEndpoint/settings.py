@@ -9,7 +9,6 @@ from django.core.management.utils import get_random_secret_key
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
-# SECRET_KEY = "django-insecure-e+zm0ir$$40%$yo8wjllbo(omqz)29qk=dfta9e(7h8q1^f8fe"
 
 DEBUG = os.getenv("DEBUG", "True") == "True"
 
