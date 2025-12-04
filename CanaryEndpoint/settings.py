@@ -12,7 +12,10 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
 
 DEBUG = os.getenv("DEBUG", "True") == "True"
 
-ALLOWED_HOSTS = ["*"]
+if DEBUG:
+    ALLOWED_HOSTS = ["*"]
+else:
+    ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS").split(",")
 
 # Application definition
 INSTALLED_APPS = [
@@ -56,12 +59,9 @@ SESSION_COOKIE_SAMESITE = "Lax"
 
 # Production-specific settings
 if not DEBUG:
-    CSRF_TRUSTED_ORIGINS = [
-        "notoliverl.pythonanywhere.com",
-    ]
+    CSRF_TRUSTED_ORIGINS = [f"https://{host}" for host in ALLOWED_HOSTS]
     CSRF_COOKIE_SECURE = True
     SESSION_COOKIE_SECURE = True
-    ALLOWED_HOSTS = ["notoliverl.pythonanywhere.com"]
 else:
     CSRF_COOKIE_SECURE = False
     SESSION_COOKIE_SECURE = False
