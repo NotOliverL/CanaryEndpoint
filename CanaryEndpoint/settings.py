@@ -15,7 +15,8 @@ DEBUG = os.getenv("DEBUG", "True") == "True"
 if DEBUG:
     ALLOWED_HOSTS = ["*"]
 else:
-    ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS").split(",")
+    allowed_hosts_str = os.getenv("ALLOWED_HOSTS", "notoliverl.pythonanywhere.com")
+    ALLOWED_HOSTS = [h.strip() for h in allowed_hosts_str.split(",")]
 
 # Application definition
 INSTALLED_APPS = [
